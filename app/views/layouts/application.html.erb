@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shop</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+          <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <% if user_signed_in? %> 
+ <div> Welcome <%= current_user.email %> </div> 
+              
+  <%= link_to "Admin", new_product_path, class: "navbar-item button is-green"%>
+    <%= link_to "shop", shops_path %>
+
+
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
+  <p class="notice"><%= notice %></p> 
+  <p class="alert"><%= alert %></p> 
+
+    <%= yield %>
+  </body>
+</html>
