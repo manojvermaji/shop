@@ -4,21 +4,15 @@ class OrderItemsController < ApplicationController
 
   def create
     @order = current_order
+    @order.user = current_user
     @order_item = @order.order_items.new(order_params)
-    
     @order.save
     session[:order_id] = @order.id
-    
+    # byebug
     redirect_to order_items_path, notice: 'Order item was successfully created.'
    end
  
   
-  
-  private
-  
-  def order_params
-    params.require(:order).permit(:product_id, :quantity)
-  end
   
 
   def update

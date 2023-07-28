@@ -97,8 +97,6 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
-    friendly_id (5.5.0)
-      activerecord (>= 4.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -234,7 +232,6 @@ DEPENDENCIES
   capybara
   debug
   devise
-  friendly_id (~> 5.2, >= 5.2.3)
   importmap-rails
   jbuilder
   puma (~> 5.0)
@@ -249,7 +246,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.1.4p223
 
 BUNDLED WITH
-   2.2.3
+   2.4.17
