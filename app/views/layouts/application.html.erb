@@ -3,8 +3,10 @@
   <head>
     <title>Shop</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-        <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
-          <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>    
+
+    
+
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,7 +16,8 @@
   </head>
 
   <body>
-  <nav>
+  
+  
   <% if user_signed_in? %> 
  <div> Welcome <%= current_user.email %> </div> 
               
@@ -24,7 +27,7 @@
 
   <div><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </div>
 <% else %>
-  <div><%= link_to "Sign up", new_user_registration_path %><div>
+  <div><%= button_to "Sign up", new_user_registration_path %><div>
   <%= button_to "Sign in", new_user_session_path %> 
 <% end %>
   <p class="notice"><%= notice %></p> 
