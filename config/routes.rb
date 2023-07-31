@@ -4,10 +4,19 @@ Rails.application.routes.draw do
   get 'cards/show'
   resources :products
   root 'shops#index'
-  # root 'products#index'
-  resources :shops, only:[:index, :show]
-  resources :order_items
   resource :cards, only:[:show]
-  # resources :order_items, only: [:index, :create, :update, :destroy]
+
+  get 'about_us', to: 'shops#about_us'
+
+
+  get '/order_items/user_order_items', to: 'order_items#user_order_items', as: 'user_order_items'
+  resources :order_items, except: [:show,:index]
+
+  resources :shops, only: [:index, :show] do
+    get 'about_us', on: :collection
+    get 'contact_us', on: :collection
+  end
+
+
 
 end

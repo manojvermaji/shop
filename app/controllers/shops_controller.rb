@@ -9,4 +9,13 @@ class ShopsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  
+
+  def about_us
+  end
+
+  
+  def contact_us
+  end
 end

@@ -33,6 +33,13 @@ class OrderItemsController < ApplicationController
 end
 
 
+
+ # find order items for a particular user
+ def user_order_items
+  @order_items = current_user.orders.includes(:order_items).flat_map(&:order_items)
+end
+
+
   private
 
   def order_params

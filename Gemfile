@@ -29,9 +29,7 @@ gem "jbuilder"
 
 gem 'devise'
 gem 'cancancan'
-gem 'mailcatcher'
 gem 'bulma-rails'
-# gem 'friendly_id', '~> 5.2', '>= 5.2.3'
 
 
 # Use Redis adapter to run Action Cable in production
