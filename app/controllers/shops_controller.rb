@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!, except: [:index] 
+  before_action :authenticate_user!, except: [:index, :about_us, :contact_us] 
 
   def index
     @product =Product.all

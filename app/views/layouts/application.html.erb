@@ -1,38 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Shop</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= javascript_include_tag 'application' %>    
+<head>
+  <title>Shop</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
-    
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0
+    }
 
+    /* Navbar styles */
+    .navbar {
+      background-color: #007bff;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+    .navbar a:hover {
+      background-color: #0056b3;
+    }
 
-  <body>
-  
-  
+    /* Container styles */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    /* Other styles */
+    .notice, .alert {
+      color: #ff0000;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    # .welcome-message {
+    #   font-weight: bold;
+    # }
+
+    /* Add any additional styles as needed */
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+  <div><%= link_to "Home", shops_path %></div>
+  <li><%= link_to 'About Us', about_us_shops_path %></li>
+
+  <li><%= link_to 'Contact Us', contact_us_shops_path %></li>
   <% if user_signed_in? %> 
- <div> Welcome <%= current_user.email %> </div> 
-              
-  <div><%= link_to "Admin", new_product_path %></div>
-    <%= link_to "shop", shops_path %>
+    <div class="welcome-message"></div>
+      <%= link_to "Add Product", new_product_path %>
+
+      <%= link_to " Cart #{current_order.order_items.size} ", cards_show_path %>
 
 
-  <div><%= button_to "Sign out", destroy_user_session_path, method: :delete %> </div>
-<% else %>
-  <div><%= button_to "Sign up", new_user_registration_path %><div>
-  <%= button_to "Sign in", new_user_session_path %> 
-<% end %>
-  <p class="notice"><%= notice %></p> 
-  <p class="alert"><%= alert %></p> 
+       <%= link_to "Order History", user_order_items_path %>
+      <div><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div>
+    <% else %>
+      <div><%= link_to "Sign up", new_user_registration_path %></div>
+      <div><%= link_to "Sign in", new_user_session_path %></div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <p class="notice"><%= notice %></p> 
+    <p class="alert"><%= alert %></p> 
 
     <%= yield %>
-  </body>
+  </div>
+</body>
 </html>
+
